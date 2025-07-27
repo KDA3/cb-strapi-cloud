@@ -402,6 +402,34 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiGameLeagueGameLeague extends Struct.CollectionTypeSchema {
+  collectionName: 'game_leagues';
+  info: {
+    displayName: 'gameLeague';
+    pluralName: 'game-leagues';
+    singularName: 'game-league';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::game-league.game-league'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGamePollGamePoll extends Struct.CollectionTypeSchema {
   collectionName: 'game_polls';
   info: {
@@ -446,7 +474,10 @@ export interface ApiGameTeamGameTeam extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    leagueName: Schema.Attribute.String;
+    league: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::game-league.game-league'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -593,7 +624,10 @@ export interface ApiScheduledGameScheduledGame
       Schema.Attribute.Private;
     homeTeam: Schema.Attribute.Relation<'oneToOne', 'api::game-team.game-team'>;
     homeTeamScore: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    leagueName: Schema.Attribute.String & Schema.Attribute.Required;
+    league: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::game-league.game-league'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1122,6 +1156,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::game-league.game-league': ApiGameLeagueGameLeague;
       'api::game-poll.game-poll': ApiGamePollGamePoll;
       'api::game-team.game-team': ApiGameTeamGameTeam;
       'api::game-venue.game-venue': ApiGameVenueGameVenue;

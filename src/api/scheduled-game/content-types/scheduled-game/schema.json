@@ -15,10 +15,6 @@
       "type": "string",
       "required": true
     },
-    "leagueName": {
-      "type": "string",
-      "required": true
-    },
     "startTime": {
       "type": "datetime",
       "required": true
@@ -56,6 +52,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::game-venue.game-venue"
+    },
+    "league": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game-league.game-league"
     }
   }
 }

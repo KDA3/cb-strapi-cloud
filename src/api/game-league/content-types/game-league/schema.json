@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_leagues",
+  "info": {
+    "singularName": "game-league",
+    "pluralName": "game-leagues",
+    "displayName": "gameLeague"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
