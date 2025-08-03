@@ -474,6 +474,9 @@ export interface ApiGameTeamGameTeam extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    displayName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'DEFAULT_NAME'>;
     league: Schema.Attribute.Relation<
       'oneToOne',
       'api::game-league.game-league'
