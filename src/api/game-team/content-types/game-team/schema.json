@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "displayName": {
+      "type": "string",
+      "default": "DEFAULT_NAME",
+      "required": true
+    },
     "name": {
       "type": "string",
       "required": true
