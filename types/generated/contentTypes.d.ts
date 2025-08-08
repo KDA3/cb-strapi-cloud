@@ -625,6 +625,7 @@ export interface ApiScheduledGameScheduledGame
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    externalUrl: Schema.Attribute.String;
     homeTeam: Schema.Attribute.Relation<'oneToOne', 'api::game-team.game-team'>;
     homeTeamScore: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     league: Schema.Attribute.Relation<

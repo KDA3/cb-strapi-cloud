@@ -38,6 +38,9 @@
     "youtubeVideoId": {
       "type": "string"
     },
+    "externalUrl": {
+      "type": "string"
+    },
     "homeTeam": {
       "type": "relation",
       "relation": "oneToOne",
