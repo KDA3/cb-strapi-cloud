@@ -576,6 +576,9 @@ export interface ApiRewardReward extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     expirationDate: Schema.Attribute.Date;
+    frenchDescription: Schema.Attribute.Text;
+    frenchName: Schema.Attribute.String;
+    frenchSecondaryDescription: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
