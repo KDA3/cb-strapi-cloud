@@ -22,11 +22,24 @@
     "secondaryDescription": {
       "type": "string"
     },
+    "frenchName": {
+      "type": "string",
+      "required": false
+    },
+    "frenchDescription": {
+      "type": "text",
+      "required": false
+    },
+    "frenchSecondaryDescription": {
+      "type": "string"
+    },
     "image": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "value": {
       "type": "integer",
