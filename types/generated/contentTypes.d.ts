@@ -560,6 +560,81 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMarketingSliderMarketingSlider
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'marketing_sliders';
+  info: {
+    displayName: 'marketingSlider';
+    pluralName: 'marketing-sliders';
+    singularName: 'marketing-slider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imageMobile: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imageWeb: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::marketing-slider.marketing-slider'
+    >;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRewardReward extends Struct.CollectionTypeSchema {
   collectionName: 'rewards';
   info: {
@@ -1168,6 +1243,7 @@ declare module '@strapi/strapi' {
       'api::game-team.game-team': ApiGameTeamGameTeam;
       'api::game-venue.game-venue': ApiGameVenueGameVenue;
       'api::global.global': ApiGlobalGlobal;
+      'api::marketing-slider.marketing-slider': ApiMarketingSliderMarketingSlider;
       'api::reward.reward': ApiRewardReward;
       'api::scheduled-game.scheduled-game': ApiScheduledGameScheduledGame;
       'plugin::content-releases.release': PluginContentReleasesRelease;
